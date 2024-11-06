@@ -1,4 +1,3 @@
-l
 # ====// Mohammed ZELMATI \\====
 
 # instructions to the players and demonstration of the scheme with the numbers that must be return
