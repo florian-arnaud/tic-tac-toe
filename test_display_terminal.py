@@ -54,8 +54,46 @@ def take_input(player_name):
             return x
         print("Please enter number between 1-9")
 
+#Check if one of the three row contain the X or O sign in each slot
+def horizontal_win():
+    if (sign_dict[0] == "X" and sign_dict[1] == "X" and sign_dict[2] == "X")
+    or (sign_dict[3] == "X" and sign_dict[4] == "X" and sign_dict[5] == "X")
+    or (sign_dict[6] == "X" and sign_dict[7] == "X" and sign_dict[8] == "X"):
+        print("Player 1 won !")
+
+    elif (sign_dict[0] == "O" and sign_dict[1] == "O" and sign_dict[2] == "O")
+    or (sign_dict[3] == "O" and sign_dict[4] == "O" and sign_dict[5] == "O")
+    or (sign_dict[6] == "O" and sign_dict[7] == "O" and sign_dict[8] == "O"):
+        print("Player 2 won !")
+
+    else:
+        return
+
+def vertical_win():
+    if (sign_dict[0] == "X" and sign_dict[3] == "X" and sign_dict[6] == "X")
+    or (sign_dict[1] == "X" and sign_dict[4] == "X" and sign_dict[7] == "X")
+    or (sign_dict[2] == "X" and sign_dict[5] == "X" and sign_dict[8] == "X"):
+        print("Player 1 won !")
+
+    elif (sign_dict[0] == "O" and sign_dict[3] == "O" and sign_dict[6] == "O")
+    or (sign_dict[1] == "O" and sign_dict[4] == "O" and sign_dict[7] == "O")
+    or (sign_dict[2] == "O" and sign_dict[5] == "O" and sign_dict[8] == "O")
+        print("Player 2 won !")
+
+    else:
+        return
+def diagonal_win():
+    if (sign_dict[0] == "X" and sign_dict[4] == "X" and sign_dict[8] == "X") 
+    or (sign_dict[2] == "X" and sign_dict[4] == "X" and sign_dict[6] == "X"):
+        print("Player 1 won !")
+
+    elif (sign_dict[0] == "O" and sign_dict[4] == "O" and sign_dict[8] == "O") 
+    or (sign_dict[2] == "O" and sign_dict[4] == "O" and sign_dict[6] == "O"):
+        print("Player 2 won !")
+    else:
+        return
 # creation of the function that designates the winner
-# création la fonction qui désigne le vainqueur  
+# création la fonction qui désigne le vainqueur 
 def result_winner(sign_dict, player_one, player_two):
     if sign_dict[0] == sign_dict[1] == sign_dict[2] == 'X'\
         or sign_dict[3] == sign_dict[4] == sign_dict[5] == 'X'\
