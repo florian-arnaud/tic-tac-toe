@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 13dac98797cc4186ba017caaada2d8efad4fd3c0
 # ====// Mohammed ZELMATI \\====
 
 # instructions to the players and demonstration of the scheme with the numbers that must be return
