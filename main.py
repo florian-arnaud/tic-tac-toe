@@ -36,7 +36,7 @@ def modifyArray(number, playerSign):
   elif(number == 8):
     gameBoard[2][2] = playerSign
 
-#Vérifie si le nombre sélectionné est déjà occupée ou non.
+#Vérifie si le nombre sélectionné est déjà occupé ou non.
 def checkSlot(number):
     number -= 1  
     row = number // 3
