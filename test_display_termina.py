@@ -1,4 +1,5 @@
 
+
 # ====// Mohammed ZELMATI \\====
 
 # instructions to the players and demonstration of the scheme with the numbers that must be return
@@ -53,7 +54,7 @@ def take_input(player_name):
 
 # creation of the function that designates the winner
 # création la fonction qui désigne le vainqueur  
-def result_winner(sign_dict, player_one, player_two):
+"""def result_winner(sign_dict, player_one, player_two):
     if sign_dict[0] == sign_dict[1] == sign_dict[2] == 'X'\
         or sign_dict[3] == sign_dict[4] == sign_dict[5] == 'X'\
             or sign_dict[6] == sign_dict[7] == sign_dict[8] == 'X'\
@@ -72,10 +73,26 @@ def result_winner(sign_dict, player_one, player_two):
                         or sign_dict[2] == sign_dict[5] == sign_dict[8] == 'O'\
                             or sign_dict[0] == sign_dict[4] == sign_dict[8] == 'O'\
                                 or sign_dict[2] == sign_dict[4] == sign_dict[6] == 'O' :
-        print("Congratulations {player_two}. You WON.!!")
+        print(f"Congratulations {player_two}. You WON.!!")
         quit("Thank you both for joining")
     else:
-        return
+        return"""
+def result_winner(sign_dict, player_one, player_two):
+    winning_combinations = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],  # lignes horizontales
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],  # lignes verticales
+        [0, 4, 8], [2, 4, 6]              # diagonales
+    ]
+    
+    for combo in winning_combinations:
+        if all(sign_dict[i] == 'X' for i in combo):
+            print(f"Congratulations {player_one}. You WON.!!")
+            quit("Thank you both for joining")
+        elif all(sign_dict[i] == 'O' for i in combo):
+            print(f"Congratulations {player_two}. You WON.\n Vous avez gagné.!!")
+            quit("Thank you both for joining")
+    
+    return
 #creation The function that manages the game and orders the players and declares the winner or the game is tie
 # création la fonction qui gère le jeu et qui ordonne les joueurs et qui déclare le vainqueur ou le jeu est à égalité
 def main():
