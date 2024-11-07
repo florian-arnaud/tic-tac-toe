@@ -11,26 +11,27 @@ def printGameBoard():
       print("", gameBoard[indexRows][indexColumns], end=" |") #end permet de remplacer le saut de ligne après un print par le caractère de notre choix, ici | pour formater la grille.
   print("\n|---|---|---|")
 
-def modifyArray(number, turn):
+
+def modifyArray(number, playerSign):
   number -= 1
   if(number == 0):
-    gameBoard[0][0] = turn
+    gameBoard[0][0] = playerSign
   elif(number == 1):
-    gameBoard[0][1] = turn
+    gameBoard[0][1] = playerSign
   elif(number == 2):
-    gameBoard[0][2] = turn
+    gameBoard[0][2] = playerSign
   elif(number == 3):
-    gameBoard[1][0] = turn
+    gameBoard[1][0] = playerSign
   elif(number == 4):
-    gameBoard[1][1] = turn
+    gameBoard[1][1] = playerSign
   elif(number == 5):
-    gameBoard[1][2] = turn
+    gameBoard[1][2] = playerSign
   elif(number == 6):
-    gameBoard[2][0] = turn
+    gameBoard[2][0] = playerSign
   elif(number == 7):
-    gameBoard[2][1] = turn
+    gameBoard[2][1] = playerSign
   elif(number == 8):
-    gameBoard[2][2] = turn
+    gameBoard[2][2] = playerSign
 
 def checkSlot(number):
     number -= 1  
