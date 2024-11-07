@@ -1,5 +1,7 @@
 #Tableau de tableaux représentant une grille 3x3
 gameBoard = [[1,2,3], [4,5,6], [7,8,9]]
+currentPlayer = "X"
+turns = 0
 
 #Affiche la grille gameBoard de manière formatée; Une boucle va s'exécuter trois fois, ce qui correspond à chaque ligne de la grille. 
 #Une seconde boucle intérieure permet de sélectionner la colonne. La combinaison des deux boucles permet donc de sélectionner chaque case de la grille.
@@ -11,7 +13,8 @@ def printGameBoard():
       print("", gameBoard[indexRows][indexColumns], end=" |") #end permet de remplacer le saut de ligne après un print par le caractère de notre choix, ici | pour formater la grille.
   print("\n|---|---|---|")
 
-
+#Met à jour la grille gameBoard avec le symbole du joueur dans la case choisie.
+#number -=1 permet d'avoir le bon index comme il s'agit d'un array.
 def modifyArray(number, playerSign):
   number -= 1
   if(number == 0):
@@ -33,6 +36,7 @@ def modifyArray(number, playerSign):
   elif(number == 8):
     gameBoard[2][2] = playerSign
 
+#Vérifie si le nombre sélectionné est déjà occupée ou non.
 def checkSlot(number):
     number -= 1  
     row = number // 3
@@ -41,15 +45,18 @@ def checkSlot(number):
         return True
     else:
         print("La case est déjà occupée.")
-
+        
+#Permet de changer de joueur. Cette fonction est appelée après un tour.
 def switchPlayer(currentPlayer):
     if currentPlayer == "X":
         return "O"
     else:
         return "X"
 
-currentPlayer = "X"
-turns = 0
+
+
+#Affiche le tableau à chaque tour pour suivre la progression de la partie. Chaque joueur doit sélectionner un nombre entre 1 et 9, correspondant à chaque case de la grille.  On modifie le tableau gameBoard avec le signe du joueur.
+#On incrémente le nombre de tours de 1, puis on change de joueur.
 
 while turns < 9:
     printGameBoard()
