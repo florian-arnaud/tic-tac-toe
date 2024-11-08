@@ -75,18 +75,20 @@ def checkWinner():
 #On incrémente le nombre de tours de 1, puis on change de joueur.
 while turns < 9:
     printGameBoard()
-    slotNumber = int(input(f"(Tour de {currentPlayer}) Saisissez un nombre entre 1 et 9: "))
-    if(slotNumber >=1 and slotNumber <=9 and checkSlot(slotNumber)):
-        modifyArray(slotNumber, currentPlayer)
-        turns +=1
-        winner = checkWinner()  # Vérifie si un joueur a gagné
-        if winner:
-            print(f"Félicitations, le joueur {winner} a gagné !")
-            printGameBoard()
-            break  # Fin de la partie si un joueur a gagné
-        currentPlayer = switchPlayer(currentPlayer)
-    else:
-        print("Erreur: La case est déjà utilisée ou vous n'avez pas sélectionné une valeur entre 1 et 9")
-
+    try:
+      slotNumber = int(input(f"(Tour de {currentPlayer}) Saisissez un nombre entre 1 et 9: "))
+      if(slotNumber >=1 and slotNumber <=9 and checkSlot(slotNumber)):
+          modifyArray(slotNumber, currentPlayer)
+          turns +=1
+          winner = checkWinner()  # Vérifie si un joueur a gagné
+          if winner:
+              print(f"Félicitations, le joueur {winner} a gagné !")
+              printGameBoard()
+              break  # Fin de la partie si un joueur a gagné
+          currentPlayer = switchPlayer(currentPlayer)
+      else:
+          print("Erreur: La case est déjà utilisée ou vous n'avez pas sélectionné une valeur entre 1 et 9")
+    except ValueError:
+      print("Erreur: Vous devez entrer un nombre entre 1 et 9")
 if turns == 9 and not winner: 
     print("Match nul !")
