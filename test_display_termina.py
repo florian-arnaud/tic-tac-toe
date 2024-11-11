@@ -54,29 +54,6 @@ def take_input(player_name):
 
 # creation of the function that designates the winner
 # création la fonction qui désigne le vainqueur  
-"""def result_winner(sign_dict, player_one, player_two):
-    if sign_dict[0] == sign_dict[1] == sign_dict[2] == 'X'\
-        or sign_dict[3] == sign_dict[4] == sign_dict[5] == 'X'\
-            or sign_dict[6] == sign_dict[7] == sign_dict[8] == 'X'\
-                or sign_dict[0] == sign_dict[3] == sign_dict[6] == 'X'\
-                    or sign_dict[1] == sign_dict[4] == sign_dict[7] == 'X'\
-                        or sign_dict[2] == sign_dict[5] == sign_dict[8] == 'X'\
-                            or sign_dict[0] == sign_dict[4] == sign_dict[8] == 'X'\
-                                or sign_dict[2] == sign_dict[4] == sign_dict[6] == 'X' :
-        print(f"Congratulations {player_one}. You WON.!!")
-        quit("Thank you both for joining")
-    elif sign_dict[0] == sign_dict[1] == sign_dict[2] == 'O'\
-        or sign_dict[3] == sign_dict[4] == sign_dict[5] == 'O'\
-            or sign_dict[6] == sign_dict[7] == sign_dict[8] == 'O'\
-                or sign_dict[0] == sign_dict[3] == sign_dict[6] == 'O'\
-                    or sign_dict[1] == sign_dict[4] == sign_dict[7] == 'O'\
-                        or sign_dict[2] == sign_dict[5] == sign_dict[8] == 'O'\
-                            or sign_dict[0] == sign_dict[4] == sign_dict[8] == 'O'\
-                                or sign_dict[2] == sign_dict[4] == sign_dict[6] == 'O' :
-        print(f"Congratulations {player_two}. You WON.!!")
-        quit("Thank you both for joining")
-    else:
-        return"""
 def result_winner(sign_dict, player_one, player_two):
     winning_combinations = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8],  # lignes horizontales
