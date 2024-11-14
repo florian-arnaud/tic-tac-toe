@@ -42,15 +42,18 @@ index_list = [] # Creating an empty list
 # création d'une fonction qui demande aux joueurs de taper des nombres entre 1 et 9, et affecter ses nombres à la liste index_list
 def take_input(player_name):
     while True :
-        x  = int(input(f'{player_name} : '))
-        x -= 1
-        if 0 <= x < 10:
-            if x in index_list:
-                print("this spot is blocked.")
-                continue
-            index_list.append(x)
-            return x
-        print("Please enter number between 1-9")
+        try:
+            x  = int(input(f'{player_name} : '))
+            x -= 1
+            if 0 <= x < 10:
+                if x in index_list:
+                    print("this spot is blocked.")
+                    continue
+                index_list.append(x)
+                return x
+            print("Please enter number between 1-9")
+        except ValueError:
+            print("Entrée invalide,Veuillez entrer un entier") 
 
 # creation of the function that designates the winner
 # création la fonction qui désigne le vainqueur  
