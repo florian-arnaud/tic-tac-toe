@@ -108,7 +108,7 @@ def main():
         # Tour du joueur :Le joueur entre son mouvement en spécifiant la ligne et la colonne.
         # Si la case choisie est vide (' '), le mouvement est validé en plaçant un 'X' dans cette case.
         # Si la case est déjà prise, un message d'erreur est affiché et le joueur doit réessayer.
-        row, col = map(int, input("Enter your move (row and column): ").split())
+        row, col = map(int, input("Enter your move (row and column):exemple: 0 1 : ").split())
         if board[row][col] == ' ':
             board[row][col] = 'X'
         else:
