@@ -8,7 +8,7 @@ turns = 0
 def printGameBoard():
   for indexRows in range(3):
     print("\n|---|---|---|")
-    print("|", end="")
+    print("|", end="") # end="" évite de passer à la ligne suivante immédiatement
     for indexColumns in range(3):
       print("", gameBoard[indexRows][indexColumns], end=" |") #end permet de remplacer le saut de ligne après un print par le caractère de notre choix, ici | pour formater la grille.
   print("\n|---|---|---|")
@@ -38,57 +38,60 @@ def modifyArray(number, playerSign):
 
 #Vérifie si le nombre sélectionné est déjà occupée ou non.
 def checkSlot(number):
-    number -= 1  
-    row = number // 3
-    col = number % 3
-    if (isinstance(gameBoard[row][col], int)):
-        return True
-    else:
-        print("La case est déjà occupée.")
+  number -= 1  # décrémenter par 1
+  row = number // 3 #la division entière // déterminer la ligne dans laquelle se trouve la case
+  col = number % 3 #le modulo (%) pour déterminer la colonne dans laquelle se trouve la case
+  if (isinstance(gameBoard[row][col], int)):#détrminer la disponibilité de la case
+    return True
+  else:
+    print("La case est déjà occupée.")
 #Permet de changer de joueur. Cette fonction est appelée après un tour
 def switchPlayer(currentPlayer):
-    if currentPlayer == "X":
-        return "O"
-    else:
-        return "X"
+  if currentPlayer == "X":
+    return "O"
+  else:
+    return "X"
     
 #Vérifie les conditions de victoire
 def checkWinner():
-    #Vérifie si il y a trois X ou trois O alignés horizontalement.
-    for row in gameBoard:
-        if row[0] == row[1] == row[2] and isinstance(row[0], str): 
-            return row[0]
-        
+  #Vérifie si il y a trois X ou trois O alignés horizontalement.
+  for row in gameBoard:
+    if row[0] == row[1] == row[2] and isinstance(row[0], str): 
+      return row[0]
+      
     #Vérifie si il y a trois X ou trois O alignés verticalement.
     for col in range(3):
-        if gameBoard[0][col] == gameBoard[1][col] == gameBoard[2][col] and isinstance(gameBoard[0][col], str):
-            return gameBoard[0][col]
+      if gameBoard[0][col] == gameBoard[1][col] == gameBoard[2][col] and isinstance(gameBoard[0][col], str):
+          return gameBoard[0][col]
 
     #Vérifie si il y a trois X ou trois O alignés en diagonale
     if gameBoard[0][0] == gameBoard[1][1] == gameBoard[2][2] and isinstance(gameBoard[0][0], str):
         return gameBoard[0][0]
     if gameBoard[0][2] == gameBoard[1][1] == gameBoard[2][0] and isinstance(gameBoard[0][2], str):
         return gameBoard[0][2]
-    return
-    
-#Affiche le tableau à chaque tour pour suivre la progression de la partie. Chaque joueur doit sélectionner un nombre entre 1 et 9, correspondant à chaque case de la grille.  On modifie le tableau gameBoard avec le signe du joueur.
-#On incrémente le nombre de tours de 1, puis on change de joueur.
+    return  
+ 
 while turns < 9:
-    printGameBoard()
-    try:
-      slotNumber = int(input(f"(Tour de {currentPlayer}) Saisissez un nombre entre 1 et 9: "))
-      if(slotNumber >=1 and slotNumber <=9 and checkSlot(slotNumber)):
-          modifyArray(slotNumber, currentPlayer)
-          turns +=1
-          winner = checkWinner()  # Vérifie si un joueur a gagné
-          if winner:
-              print(f"Félicitations, le joueur {winner} a gagné !")
-              printGameBoard()
-              break  # Fin de la partie si un joueur a gagné
-          currentPlayer = switchPlayer(currentPlayer)
-      else:
-          print("Erreur: La case est déjà utilisée ou vous n'avez pas sélectionné une valeur entre 1 et 9")
-    except ValueError:
-      print("Erreur: Vous devez entrer un nombre entre 1 et 9")
+  #Affiche le tableau à chaque tour pour suivre la progression de la partie. 
+  printGameBoard()
+  try: # Essayer d'exécuter le code suivant (si le nombre est entre 1 et 9)
+    #Chaque joueur doit sélectionner un nombre entre 1 et 9, correspondant à chaque case de la grille. 
+    slotNumber = int(input(f"(Tour de {currentPlayer}) Saisissez un nombre entre 1 et 9: "))
+    # On modifie le tableau gameBoard avec le signe du joueur.
+    if(slotNumber >=1 and slotNumber <=9 and checkSlot(slotNumber)):
+      modifyArray(slotNumber, currentPlayer)
+      turns +=1 # incrémenter le nombre de tours de 1, puis on change de joueur.
+      winner = checkWinner()  # Vérifie si un joueur a gagné
+      if winner: # si un joueur a gagné
+        print(f"Félicitations, le joueur {winner} a gagné !")
+        printGameBoard()
+        break  # Fin de la partie 
+      currentPlayer = switchPlayer(currentPlayer)
+    else:
+      print("Erreur: La case est déjà utilisée ou vous n'avez pas sélectionné une valeur entre 1 et 9")
+  #Gère les erreurs de saisie lorsque l'utilisateur entre une valeur qui n'est pas un entier
+  except ValueError:
+    print("Erreur: Vous devez entrer un nombre entre 1 et 9")
+#Si le nombre maximum de tours est atteint 9 et qu'il n'y a pas de gagnant, affiche "Match nul !"      
 if turns == 9 and not winner: 
-    print("Match nul !")
+  print("Match nul !")
